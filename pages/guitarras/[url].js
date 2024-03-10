@@ -1,20 +1,7 @@
 import { GuitarraDetalle } from "../../components/guitarra-detalle";
 import Layout from "../../components/layout";
 
-// export async function getServerSideProps({query:params}) {
-//   const {url} = params
-//   const respuesta = await fetch(
-//     `${process.env.API_url}/guitarras?filters[url]=${url}&populate=image`
-//   );
-//   const {data} = await respuesta.json();
-//   return {
-//     props: {
-//       producto:data
-//     },
-//   };
-// }
-
-export async function getStaticProps({params}) {
+export async function getServerSideProps({query:params}) {
   const {url} = params
   const respuesta = await fetch(
     `${process.env.API_url}/guitarras?filters[url]=${url}&populate=image`
@@ -27,21 +14,34 @@ export async function getStaticProps({params}) {
   };
 }
 
-export async function getStaticPaths(){
-  const respuesta = await fetch(`${process.env.API_URL}/guitarras`)
-  const {data} = await respuesta.json()
+// export async function getStaticProps({params}) {
+//   const {url} = params
+//   const respuesta = await fetch(
+//     `${process.env.API_url}/guitarras?filters[url]=${url}&populate=image`
+//   );
+//   const {data} = await respuesta.json();
+//   return {
+//     props: {
+//       producto:data
+//     },
+//   };
+// }
 
-  const paths = data.map( d=>({
-    params:{
-      url:d.attributes.url
-    }
-  }))
+// export async function getStaticPaths(){
+//   const respuesta = await fetch(`${process.env.API_URL}/guitarras`)
+//   const {data} = await respuesta.json()
 
-  return{
-    paths,
-    fallback:false
-  }
-}
+//   const paths = data.map( d=>({
+//     params:{
+//       url:d.attributes.url
+//     }
+//   }))
+
+//   return{
+//     paths,
+//     fallback:false
+//   }
+// }
 
 export default function GuitarraInfo({producto , agregarCarrito}) {
   const { name } = producto[0].attributes
