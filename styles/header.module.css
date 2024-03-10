@@ -1,0 +1,11 @@
+.header {
+  background-image: linear-gradient(
+      to right,
+      rgb(0 0 0 / 0.8),
+      rgb(0 0 0 / 0.7)
+    ),
+    url(../public/img/header-2.webp);
+  padding: 5rem 0;
+  background-position: center;
+  background-size: cover;
+}
